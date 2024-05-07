@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SupplyPetModel4StoreContainer" CdmEntityContainer="SupplyPetEntities4">
+    <EntitySetMapping Name="Cita">
+      <EntityTypeMapping TypeName="SupplyPetModel4.Cita">
+        <MappingFragment StoreEntitySet="Cita">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Mascota" ColumnName="Id_Mascota" />
+          <ScalarProperty Name="Descripcion_Servicio" ColumnName="Descripcion_Servicio" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Id_Horario" ColumnName="Id_Horario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Horario">
+      <EntityTypeMapping TypeName="SupplyPetModel4.Horario">
+        <MappingFragment StoreEntitySet="Horario">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="dia" ColumnName="dia" />
+          <ScalarProperty Name="hora" ColumnName="hora" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mascota">
+      <EntityTypeMapping TypeName="SupplyPetModel4.Mascota">
+        <MappingFragment StoreEntitySet="Mascota">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="raza" ColumnName="raza" />
+          <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

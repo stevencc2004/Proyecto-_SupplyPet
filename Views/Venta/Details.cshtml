@@ -1,0 +1,75 @@
+﻿@model Proyecto_PetSupply.Models.Venta
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .btn-group {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .btn-group a {
+            margin-right: 10px;
+        }
+</style>
+
+<h2>Consultar Venta</h2>
+
+<div>
+    <h4>Datos de Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Empleado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Empleado)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-success">Editar</a> |
+    <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Eliminar</a>
+    <br />
+    <br />
+    @Html.ActionLink("Regresar a lista de Ventas", "Index")
+</p>

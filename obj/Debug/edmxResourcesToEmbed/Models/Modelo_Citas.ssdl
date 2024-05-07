@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupplyPetModel4.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Id_Mascota" Type="int" Nullable="false" />
+    <Property Name="Descripcion_Servicio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Precio" Type="int" Nullable="false" />
+    <Property Name="Id_Horario" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Horario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="dia" Type="date" Nullable="false" />
+    <Property Name="hora" Type="time" Precision="7" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Mascota">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="raza" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Id_Cliente" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Cita__Id_Horario__4E88ABD4">
+    <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Horario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Id_Horario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cita__Id_Mascota__4D94879B">
+    <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mascota">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Id_Mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SupplyPetModel4StoreContainer">
+    <EntitySet Name="Cita" EntityType="Self.Cita" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Horario" EntityType="Self.Horario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Mascota" EntityType="Self.Mascota" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Cita__Id_Horario__4E88ABD4" Association="Self.FK__Cita__Id_Horario__4E88ABD4">
+      <End Role="Horario" EntitySet="Horario" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cita__Id_Mascota__4D94879B" Association="Self.FK__Cita__Id_Mascota__4D94879B">
+      <End Role="Mascota" EntitySet="Mascota" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

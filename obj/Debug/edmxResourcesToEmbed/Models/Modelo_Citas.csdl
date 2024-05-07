@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SupplyPetModel4" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cita">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Id_Mascota" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion_Servicio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+    <Property Name="Id_Horario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Horario" Relationship="Self.FK__Cita__Id_Horario__4E88ABD4" FromRole="Cita" ToRole="Horario" />
+    <NavigationProperty Name="Mascota" Relationship="Self.FK__Cita__Id_Mascota__4D94879B" FromRole="Cita" ToRole="Mascota" />
+  </EntityType>
+  <EntityType Name="Horario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="dia" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="hora" Type="Time" Nullable="false" Precision="7" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__Id_Horario__4E88ABD4" FromRole="Horario" ToRole="Cita" />
+  </EntityType>
+  <EntityType Name="Mascota">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="raza" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cita" Relationship="Self.FK__Cita__Id_Mascota__4D94879B" FromRole="Mascota" ToRole="Cita" />
+  </EntityType>
+  <Association Name="FK__Cita__Id_Horario__4E88ABD4">
+    <End Role="Horario" Type="Self.Horario" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Horario">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Id_Horario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Cita__Id_Mascota__4D94879B">
+    <End Role="Mascota" Type="Self.Mascota" Multiplicity="1" />
+    <End Role="Cita" Type="Self.Cita" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Mascota">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Cita">
+        <PropertyRef Name="Id_Mascota" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="SupplyPetEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cita" EntityType="Self.Cita" />
+    <EntitySet Name="Horario" EntityType="Self.Horario" />
+    <EntitySet Name="Mascota" EntityType="Self.Mascota" />
+    <AssociationSet Name="FK__Cita__Id_Horario__4E88ABD4" Association="Self.FK__Cita__Id_Horario__4E88ABD4">
+      <End Role="Horario" EntitySet="Horario" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Cita__Id_Mascota__4D94879B" Association="Self.FK__Cita__Id_Mascota__4D94879B">
+      <End Role="Mascota" EntitySet="Mascota" />
+      <End Role="Cita" EntitySet="Cita" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
