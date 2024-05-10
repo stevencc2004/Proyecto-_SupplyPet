@@ -1,0 +1,79 @@
+﻿@model Proyecto_PetSupply.Models.Producto
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<style>
+    h2, h3 {
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+<h2>Eliminar Producto</h2>
+
+<h3>¿Esta seguro que desea eliminar el producto?</h3>
+<div>
+    <h4>Datos del Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            Fecha de vencimiento
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Vencimiento)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" />
+        </div>
+
+        <br />
+
+        <div class="form-actions">
+            @Html.ActionLink("Regresar a lista de Productos", "Index2")
+        </div>
+    }
+</div>

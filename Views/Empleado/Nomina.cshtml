@@ -1,0 +1,53 @@
+﻿@model Proyecto_PetSupply.Models.Empleado
+
+@{
+    ViewBag.Title = "Nomina";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Nomina</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            ID
+        </th>
+        <th>
+            Nombre
+        </th>
+        <th>
+            Costo de la Hora
+        </th>
+        <th>
+            Horas Trabajadas
+        </th>
+        <th>
+            Salario
+        </th>
+    </tr>
+    <tr>
+        <td>
+            @Html.DisplayFor(model => model.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Costo_hora)
+        </td>
+        <td>
+            @Html.DisplayFor(model => model.Horas_Trabajadas)
+        </td>
+        <td>
+            @ViewBag.TotalPagar
+        </td>
+    </tr>
+</table>
+
+<div style="padding:10px;border:1px solid black">
+    <div><a href="@Url.Action("ImprimirNomina", new { id = Model.Id })">Imprimir PDF</a></div>
+</div>
+
+<div>
+    @Html.ActionLink("Volver a la lista de empleados", "Index")
+</div>

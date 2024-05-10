@@ -1,0 +1,80 @@
+﻿@model Proyecto_PetSupply.Models.Cita
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2 {
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .btn-group {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .btn-group a {
+            margin-right: 10px;
+        }
+</style>
+
+<h2>Detalles</h2>
+
+<div>
+    <h4>Datos de la Cita</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            ID
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt>
+            Descripcion del Servicio
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion_Servicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            Horario
+        </dt>
+        <dd>
+            @ViewBag.Horario
+        </dd>
+
+        <dt>
+            Nombre de la mascota
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mascota.Nombre)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", new { id = Model.Id })" class="btn btn-success">Editar</a> |
+    <a href="@Url.Action("Delete", new { id = Model.Id })" class="btn btn-danger">Eliminar</a>
+    <br />
+    <br />
+    @Html.ActionLink("Regresar a lista de Citas", "Index")
+</p>

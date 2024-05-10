@@ -1,0 +1,82 @@
+﻿@model Proyecto_PetSupply.Models.Venta
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2, h3 {
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+
+<h2>Eliminar Venta</h2>
+
+<h3>¿Esta seguro que desea eliminar la Venta?</h3>
+<div>
+    <h4>Datos de la Venta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Empleado
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_Empleado)
+        </dd>
+
+        <dt>
+            Cliente
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+        </div>
+
+        <br />
+
+        <div class="form-actions">
+            @Html.ActionLink("Regresar a lista de Ventas", "Index","Venta")
+        </div>
+    }
+</div>

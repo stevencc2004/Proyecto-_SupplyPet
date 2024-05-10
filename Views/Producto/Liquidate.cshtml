@@ -1,0 +1,77 @@
+﻿@model Proyecto_PetSupply.Models.Producto
+
+@{
+    ViewBag.Title = "Liquidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    h2, h3, h4 {
+        text-align: center;
+    }
+
+    .product-details {
+        max-width: 500px;
+        margin: 0 auto;
+    }
+
+    .form-actions {
+        margin-top: 20px;
+    }
+</style>
+
+<h2>Liquidar Producto</h2>
+
+<h3>¿Desea Liquidar este Producto?</h3>
+<h4>Al liquidar el Producto se le otorgará un descuento del 20% sobre el precio actual</h4>
+
+<div class="product-details">
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            Fecha de vencimiento
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_Vencimiento)
+        </dd>
+    </dl>
+</div>
+
+<div class="form-actions">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Liquidar" class="btn btn-info" />
+            </div>
+        </div>
+    }
+
+    <div>
+        @Html.ActionLink("Regresar a lista de Productos", "Index")
+    </div>
+</div>
